@@ -60,7 +60,7 @@ public class RoutePlanner {
                         Target.row += 1;
                         movedDown = true;
                         fields.add(field);
-                        System.out.println("moving to row:" + Target.row + " column: " + Target.column);
+//                        System.out.println("moving to row:" + Target.row + " column: " + Target.column);
                     }
                 }
             }
@@ -71,7 +71,7 @@ public class RoutePlanner {
                         Target.row -= 1;
                         movedUp = true;
                         fields.add(field);
-                        System.out.println("moving to row:" + Target.row + " column: " + Target.column);
+//                        System.out.println("moving to row:" + Target.row + " column: " + Target.column);
                     }
                 }
             }
@@ -82,7 +82,7 @@ public class RoutePlanner {
                         Target.column += 1;
                         movedRight = true;
                         fields.add(field);
-                        System.out.println("moving to row:" + Target.row + " column: " + Target.column);
+//                        System.out.println("moving to row:" + Target.row + " column: " + Target.column);
                     }
                 }
             }
@@ -93,7 +93,7 @@ public class RoutePlanner {
                         Target.column -= 1;
                         movedLeft = true;
                         fields.add(field);
-                        System.out.println("moving to row:" + Target.row + " column: " + Target.column);
+//                        System.out.println("moving to row:" + Target.row + " column: " + Target.column);
                     }
                 }
             }
