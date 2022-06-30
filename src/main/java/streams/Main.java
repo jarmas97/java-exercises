@@ -4,6 +4,7 @@ import com.sun.org.apache.xpath.internal.operations.Or;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.stream.Collectors;
 
 public class Main {
@@ -14,19 +15,25 @@ public class Main {
         Product book300290 = new Product((long) 2, "300", "Books", 290.0);
         Product bookHarryPotter89 = new Product((long) 3, "Harry Potter", "books", 89.0);
         Product puzzleHarryPotter110 = new Product((long) 4, "Harry Potter:Puzzle", "Puzzles", 110.0);
+        Product toySpiderman320 = new Product((long) 5, "Spiderman", "Toy", 320.0);
+        Product toyBatman349 = new Product((long) 6, "Batman", "Toy", 349.0);
+        Product toySuperman290 = new Product((long) 7, "Superman", "Toy", 290.0);
 
         List<Product> products0 = new ArrayList<>();
         products0.add(bookTroy240);
         products0.add(book300290);
         products0.add(bookHarryPotter89);
         products0.add(puzzleHarryPotter110);
+        products0.add(toyBatman349);
+        products0.add(toySpiderman320);
+        products0.add(toySuperman290);
 
-        Product babyToys45 = new Product((long) 5, "Toys", "baby", 45.0);
+        Product babyGloves45 = new Product((long) 5, "Gloves", "baby", 45.0);
         Product babyPinkClothes35 = new Product((long) 6, "PinkClothes", "baby", 35.0);
         Product babyBoots97 = new Product((long) 7, "Boots", "baby", 97.0);
 
         List<Product> products1 = new ArrayList<>();
-        products1.add(babyToys45);
+        products1.add(babyGloves45);
         products1.add(babyPinkClothes35);
         products1.add(babyBoots97);
 
@@ -69,6 +76,12 @@ public class Main {
         for (Order order : result1) {
             System.out.println(order.getProductList());
         }
+
+//      Exercise 3 — Obtain a list of product with category = “Toys” and then apply 10% discount
+        List<Product> result2 = products0.stream()
+                .filter(p -> p.getCategory().equalsIgnoreCase("toys"))
+                .map(p -> new Product(p.getId(), p.getName(), p.getCategory(), p.getPrice() * 0.9))
+                .collect(Collectors.toList());
 
     }
 }
