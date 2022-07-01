@@ -3,6 +3,7 @@ import com.sun.org.apache.xpath.internal.operations.Or;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.stream.Collectors;
@@ -83,5 +84,14 @@ public class Main {
                 .map(p -> new Product(p.getId(), p.getName(), p.getCategory(), p.getPrice() * 0.9))
                 .collect(Collectors.toList());
 
+//----------------------------------------------------------------------------------------------------
+//      Stream training:
+
+        String[] animals = {"Monkey", "Lemur", "Lion", "Giraffe"};
+        List<String> result = Arrays.stream(animals).filter(a -> a.startsWith("L"))
+                .map(String::toUpperCase)
+                .sorted()
+                .collect(Collectors.toList());
+        System.out.println(result);
     }
 }
