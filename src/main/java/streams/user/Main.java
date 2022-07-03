@@ -31,23 +31,23 @@ public class Main {
         allCarsInDollars.add(redBMWi4R50);
 
 
-//        Creating list with only lambo cars
+//        1. Creating list with only lambo cars-------------------------------------------------------------
 
         List<Car> lamboCars = allCarsInDollars.stream()
                 .filter(car -> car.getBrand().equalsIgnoreCase("LAMBORGHINI"))
                 .collect(Collectors.toList());
         System.out.println(lamboCars);
 
-//        Changing price from dollars toPLN
+//        2. Changing price from dollars toPLN--------------------------------------------------------------
 
 
-//        !!!!!!!!!!!THIS CHANGES THE SOURCE!!!!!!!!!!!
+//        THIS CHANGES THE SOURCE
 
 //        List<Car> allCarsInPLN = allCarsInDollars.stream()
 //                .peek(car -> car.setPrice(car.getPrice().multiply(BigDecimal.valueOf(4.5))))
 //                .collect(Collectors.toList());
 
-//        !!!!!!!!!!!!THIS DOES NOT CHANGE THE SOURCE!!!!!!!!!!!!
+//        THIS DOES NOT CHANGE THE SOURCE
 
         List<Car> allCarsInPLN = allCarsInDollars.stream()
                 .map(c -> new Car(c.getId(),
@@ -60,5 +60,16 @@ public class Main {
         System.out.println(allCarsInPLN);
         System.out.println(allCarsInDollars);
 
+
+//        Changing price from dollars to PLN with only black cars
+        List<Car> blackCarsInPLN = allCarsInDollars.stream()
+                .filter(car -> car.getColour().equalsIgnoreCase("black"))
+                .map(c -> new Car(c.getId(),
+                        c.getBrand(),
+                        c.getModel(),
+                        c.getColour(),
+                        c.getPrice().multiply(BigDecimal.valueOf(4.5))))
+                .collect(Collectors.toList());
+        System.out.println(blackCarsInPLN);
     }
 }
