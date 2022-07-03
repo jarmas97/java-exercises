@@ -2,6 +2,7 @@ package streams.user;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -16,7 +17,7 @@ public class Main {
         Car blackMercAMGGTR = new Car(4, "MERCEDES", "AMG GT R", "BLACK", new BigDecimal(157500));
         
         Car blackBMWM240i = new Car(5, "BMW", "M240i xDrive Coupé", "BLACK", new BigDecimal(59955));
-        Car redBMWi4R50 = new Car(6, "BMW", "i4 R50", "RED", new BigDecimal(63905));
+        Car redBMWi4R50 = new Car(6, "BMW", "I4 R50", "RED", new BigDecimal(63905));
 
 
         List<Car> allCarsInDollars = new ArrayList<>();
@@ -32,6 +33,7 @@ public class Main {
 
 
 //        1. Creating list with only lambo cars-------------------------------------------------------------
+        //METHODS: filter()
 
         List<Car> lamboCars = allCarsInDollars.stream()
                 .filter(car -> car.getBrand().equalsIgnoreCase("LAMBORGHINI"))
@@ -39,7 +41,7 @@ public class Main {
         System.out.println(lamboCars);
 
 //        2. Changing price from dollars toPLN--------------------------------------------------------------
-
+        //METHODS: map()
 
 //        THIS CHANGES THE SOURCE
 
@@ -61,7 +63,9 @@ public class Main {
         System.out.println(allCarsInDollars);
 
 
-//        Changing price from dollars to PLN with only black cars
+//        Changing price from dollars to PLN with only black cars-------------------------------------------
+        //METHODS: filter(), map()
+
         List<Car> blackCarsInPLN = allCarsInDollars.stream()
                 .filter(car -> car.getColour().equalsIgnoreCase("black"))
                 .map(c -> new Car(c.getId(),
@@ -71,5 +75,15 @@ public class Main {
                         c.getPrice().multiply(BigDecimal.valueOf(4.5))))
                 .collect(Collectors.toList());
         System.out.println(blackCarsInPLN);
+//-----------------------------------------------------------------------------------------------------------
+//        METHODS: forEach(), filter(), sorted()
+
+        allCarsInDollars.stream().filter(car -> car.getColour().equalsIgnoreCase("RED"))
+                .forEach(car -> System.out.println(car.getModel() + " THIS CAR IS RED"));
+//        SORTING
+        allCarsInDollars.stream()
+                .sorted(Comparator.comparing(Car::getModel))
+                .forEach(car -> System.out.println(car.getModel()));
+
     }
 }
