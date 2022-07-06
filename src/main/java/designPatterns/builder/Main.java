@@ -14,6 +14,12 @@ public class Main {
                 .model("GLC SUV")
                 .colour("BLUE")
                 .build();
+        Car car1 = new Car.Builder()
+                .brand("BWM")
+                .colour("BLACK")
+                .build();
+
         System.out.println(car);
+        System.out.println(car1);
     }
 }
